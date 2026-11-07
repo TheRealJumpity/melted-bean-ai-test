@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Melted-Bean · Slow-Melted Specialty Coffee</title>
+<meta name="description" content="Melted-Bean is a specialty coffee shop with small-batch roasts, signature melted drinks, online ordering, loyalty rewards and brewing tools.">
+<meta name="theme-color" content="#2b1810">
+<meta property="og:title" content="Melted-Bean · Slow-Melted Specialty Coffee">
+<meta property="og:description" content="Order ahead, build your own drink, find your perfect brew.">
+<meta property="og:type" content="website">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"Melted-Bean","servesCuisine":"Coffee","priceRange":"$$","openingHours":["Mo-Fr 06:30-19:00","Sa 07:00-20:00","Su 08:00-17:00"],"acceptsReservations":true}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div id="preloader" aria-hidden="true">
+  <svg viewBox="0 0 120 120" width="120" height="120"><g class="pl-cup"><path d="M25 45h60v30a25 25 0 0 1-25 25h-10a25 25 0 0 1-25-25z" fill="#c8864b"/><path d="M85 52h8a10 10 0 0 1 0 22h-8" fill="none" stroke="#c8864b" stroke-width="6"/><path class="pl-drip" d="M40 100c0 8 6 8 6 0" fill="#c8864b"/></g>
+  <path class="pl-steam" d="M45 35c-6-8 6-12 0-20M60 35c-6-8 6-12 0-20M75 35c-6-8 6-12 0-20" fill="none" stroke="#f3d9b1" stroke-width="3" stroke-linecap="round"/></svg>
+  <p>Melting the beans…</p>
+</div>
+
+<div id="progress"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="cursor" aria-hidden="true"></div>
+
+<div id="seasonal" class="seasonal"><span id="seasonalText"></span><button id="seasonalClose" aria-label="Dismiss banner">×</button></div>
+
+<header id="nav">
+  <a class="brand" href="#top" aria-label="Melted-Bean home">
+    <svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true"><ellipse cx="24" cy="24" rx="15" ry="20" transform="rotate(25 24 24)" fill="#c8864b"/><path d="M14 10c10 6 10 22 2 30" transform="rotate(25 24 24)" fill="none" stroke="#2b1810" stroke-width="3" stroke-linecap="round"/><path class="melt" d="M20 40c0 6 5 6 5 0" fill="#c8864b"/></svg>
+    <span>Melted<b>-Bean</b></span>
+  </a>
+  <nav id="links" aria-label="Main">
+    <a href="#menu">Menu</a><a href="#builder">Build</a><a href="#quiz">Quiz</a><a href="#reels">Reels</a><a href="#brew">Brew Lab</a><a href="#rewards">Rewards</a><a href="#visit">Visit</a>
+  </nav>
+  <div class="nav-actions">
+    <span id="openBadge" class="badge"></span>
+    <button id="ambience" class="icon-btn" aria-pressed="false" title="Café ambience">🎧</button>
+    <button id="themeBtn" class="icon-btn" title="Toggle theme (T)">🌗</button>
+    <button id="cartBtn" class="icon-btn cart-btn" title="Cart (C)">🛒<span id="cartCount">0</span></button>
+    <button id="burger" class="icon-btn burger" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main id="main">
+<section id="top" class="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="media/hero-poster.jpg"><source src="media/hero.mp4" type="video/mp4"></video>
+  <div class="hero-shade"></div>
+  <div class="hero-inner">
+    <p class="eyebrow" data-reveal>Small-batch · Slow-melted · Sustainably sourced</p>
+    <h1 data-reveal>Coffee that<br><span class="melt-text">melts</span> into your day.</h1>
+    <p class="lead" data-reveal>Hand-roasted beans, velvet milk, and drinks designed to be savoured. Order ahead, build your own, or settle in with us.</p>
+    <div class="cta" data-reveal>
+      <a class="btn" href="#menu">Order now</a>
+      <a class="btn ghost" href="#builder">Build your drink</a>
+      <button class="btn ghost" id="shareBtn">Share ↗</button>
+    </div>
+    <div class="scroll-hint">scroll ↓</div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div><span>☕ Fresh roasted weekly</span><span>🌱 Compostable cups</span><span>🥛 Oat · Almond · Soy · Dairy</span><span>🎁 Gift cards</span><span>⭐ Earn a free drink every 10</span><span>☕ Fresh roasted weekly</span><span>🌱 Compostable cups</span><span>🥛 Oat · Almond · Soy · Dairy</span><span>🎁 Gift cards</span><span>⭐ Earn a free drink every 10</span></div></div>
+
+<section class="stats">
+  <div data-reveal><b data-count="12000">0</b><span>cups poured / month</span></div>
+  <div data-reveal><b data-count="14">0</b><span>single-origin beans</span></div>
+  <div data-reveal><b data-count="4.9" data-dec="1">0</b><span>average rating</span></div>
+  <div data-reveal><b data-count="100" data-suffix="%">0</b><span>compostable packaging</span></div>
+</section>
+
+<section class="special" id="special">
+  <div class="wrap special-grid">
+    <img id="specialImg" alt="Today's special" width="360" height="360">
+    <div>
+      <p class="eyebrow">Today's special · <span id="specialDay"></span></p>
+      <h2 id="specialName"></h2>
+      <p id="specialDesc"></p>
+      <p class="price-big" id="specialPrice"></p>
+      <button class="btn" id="specialAdd">Add to order</button>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="wrap">
+  <h2 class="sec" data-reveal>The Menu</h2>
+  <div class="controls" data-reveal>
+    <input id="search" type="search" placeholder="Search the menu  ( / )" aria-label="Search menu">
+    <div id="cats" class="chips" role="tablist"></div>
+    <div class="chips" id="diet">
+      <button class="chip" data-diet="vegan">🌱 Vegan</button>
+      <button class="chip" data-diet="gf">🌾 Gluten-free</button>
+      <button class="chip" data-diet="decaf">😴 Decaf</button>
+      <button class="chip" data-diet="fav">♥ Favourites</button>
+    </div>
+    <select id="sort" aria-label="Sort"><option value="feat">Featured</option><option value="lo">Price: low → high</option><option value="hi">Price: high → low</option><option value="az">A → Z</option></select>
+  </div>
+  <div id="menuGrid" class="grid"></div>
+  <p id="noResults" class="muted" hidden>Nothing matches. Try clearing a filter.</p>
+  <button class="btn ghost print" onclick="window.print()">🖨 Print menu</button>
+</section>
+
+<section id="builder" class="band">
+  <div class="wrap builder">
+    <div>
+      <h2 class="sec">Build-a-Brew</h2>
+      <p class="muted">Design a drink exactly how you like it. The cup updates live.</p>
+      <div class="form-grid">
+        <label>Base<select id="bBase"></select></label>
+        <label>Size<select id="bSize"><option value="0">Small 8oz</option><option value="0.75" selected>Medium 12oz</option><option value="1.5">Large 16oz</option></select></label>
+        <label>Milk<select id="bMilk"><option value="0">Whole</option><option value="0">Skim</option><option value="0.6">Oat</option><option value="0.6">Almond</option><option value="0.5">Soy</option></select></label>
+        <label>Extra shots<input id="bShots" type="range" min="0" max="4" value="0"><output id="bShotsOut">0</output></label>
+        <label>Syrup<select id="bSyrup"><option value="0">None</option><option value="0.5">Vanilla</option><option value="0.5">Caramel</option><option value="0.5">Hazelnut</option><option value="0.5">Pumpkin spice</option><option value="0.5">Lavender</option></select></label>
+        <label>Temperature<select id="bTemp"><option>Hot</option><option>Iced</option><option>Extra hot</option></select></label>
+        <label class="check"><input id="bFoam" type="checkbox"> Extra foam (+$0.25)</label>
+        <label class="check"><input id="bWhip" type="checkbox"> Whipped cream (+$0.50)</label>
+      </div>
+      <p class="price-big">$<span id="bPrice">0.00</span></p>
+      <button class="btn" id="bAdd">Add custom drink</button>
+    </div>
+    <div class="cup-preview">
+      <svg viewBox="0 0 240 280" aria-label="Drink preview">
+        <defs><linearGradient id="liq" x1="0" y1="0" x2="0" y2="1"><stop id="liqTop" offset="0" stop-color="#6b3b1d"/><stop id="liqBot" offset="1" stop-color="#3a1e0e"/></linearGradient></defs>
+        <path d="M50 70h140l-14 170a20 20 0 0 1-20 18H84a20 20 0 0 1-20-18z" fill="rgba(255,255,255,.12)" stroke="#f3d9b1" stroke-width="4"/>
+        <path id="liquid" d="M56 110h128l-10 128a16 16 0 0 1-16 14H82a16 16 0 0 1-16-14z" fill="url(#liq)"/>
+        <ellipse id="foam" cx="120" cy="108" rx="64" ry="9" fill="#f6e7cf"/>
+        <g id="whip" opacity="0"><path d="M90 100c0-22 60-22 60 0-10-8-50-8-60 0z" fill="#fff"/><path d="M100 82c0-18 40-18 40 0-8-6-32-6-40 0z" fill="#fff"/></g>
+        <g class="steam" id="bSteam"><path d="M95 50c-10-10 10-14 0-26M120 50c-10-10 10-14 0-26M145 50c-10-10 10-14 0-26" fill="none" stroke="#f3d9b1" stroke-width="4" stroke-linecap="round"/></g>
+        <g id="ice" opacity="0"><rect x="85" y="130" width="28" height="28" rx="5" fill="rgba(255,255,255,.35)" transform="rotate(12 99 144)"/><rect x="130" y="150" width="28" height="28" rx="5" fill="rgba(255,255,255,.3)" transform="rotate(-10 144 164)"/></g>
+      </svg>
+      <p id="bSummary" class="muted"></p>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" class="wrap">
+  <h2 class="sec" data-reveal>Find Your Brew</h2>
+  <div class="card quiz" id="quizBox" data-reveal></div>
+</section>
+
+<section id="reels" class="band">
+  <div class="wrap">
+    <h2 class="sec" data-reveal>Reels &amp; Gallery</h2>
+    <p class="muted">Animated AI-generated showreels. Drop your clips into <code>media/</code> and they play automatically; until then, built-in animations fill in.</p>
+    <div class="reels">
+      <article class="reel" data-reveal><div class="reel-fallback f-pour"></div><video muted loop playsinline preload="none" data-src="media/reel-pour.mp4"></video><h3>The Slow Pour</h3></article>
+      <article class="reel" data-reveal><div class="reel-fallback f-latte"></div><video muted loop playsinline preload="none" data-src="media/reel-latte.mp4"></video><h3>Latte Art Lab</h3></article>
+      <article class="reel" data-reveal><div class="reel-fallback f-roast"></div><video muted loop playsinline preload="none" data-src="media/reel-roast.mp4"></video><h3>Roast Day</h3></article>
+    </div>
+    <div id="gallery" class="gallery"></div>
+  </div>
+</section>
+
+<section id="brew" class="wrap">
+  <h2 class="sec" data-reveal>Brew Lab</h2>
+  <div class="lab">
+    <div class="card" data-reveal>
+      <h3>Pour-over timer</h3>
+      <div class="drip-wrap"><svg viewBox="0 0 120 150" width="120"><path d="M20 20h80l-25 50H45z" fill="none" stroke="currentColor" stroke-width="4"/><path id="dripLine" d="M60 70v14" stroke="#c8864b" stroke-width="4" stroke-dasharray="4 6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" from="0" to="-20" dur=".6s" repeatCount="indefinite"/></path><rect x="30" y="90" width="60" height="50" rx="8" fill="none" stroke="currentColor" stroke-width="4"/><rect id="carafe" x="33" y="138" width="54" height="0" rx="4" fill="#6b3b1d"/></svg></div>
+      <div class="timer" id="timer">0:00</div>
+      <p id="brewStep" class="muted">Ready when you are.</p>
+      <div class="row"><button class="btn" id="brewStart">Start</button><button class="btn ghost" id="brewReset">Reset</button></div>
+    </div>
+    <div class="card" data-reveal>
+      <h3>Ratio calculator</h3>
+      <label>Coffee (g)<input id="rGrams" type="number" value="20" min="1"></label>
+      <label>Ratio 1:<input id="rRatio" type="number" value="16" min="8" max="20"></label>
+      <p class="price-big"><span id="rWater">320</span> ml water</p>
+      <p class="muted">Tip: 1:16 is balanced, 1:15 stronger, 1:17 lighter.</p>
+    </div>
+    <div class="card" data-reveal>
+      <h3>Caffeine tracker</h3>
+      <div id="caff"></div>
+      <div class="meter"><div id="caffBar"></div></div>
+      <p id="caffText" class="muted"></p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="origins">
+  <div class="wrap">
+    <h2 class="sec" data-reveal>Our Origins</h2>
+    <div class="origins" id="originList"></div>
+  </div>
+</section>
+
+<section id="subscribe" class="wrap">
+  <h2 class="sec" data-reveal>Bean Subscription</h2>
+  <div class="card sub" data-reveal>
+    <label>Roast<select id="sRoast"><option>Light · Ethiopia</option><option>Medium · Colombia</option><option>Dark · Sumatra</option><option>Melted Blend</option></select></label>
+    <label>Bag<select id="sBag"><option value="16">340g</option><option value="28">1kg</option></select></label>
+    <label>Frequency<select id="sFreq"><option value="0.85">Weekly (−15%)</option><option value="0.9" selected>Every 2 weeks (−10%)</option><option value="0.95">Monthly (−5%)</option></select></label>
+    <div><p class="price-big">$<span id="sPrice">0</span></p><button class="btn" id="sAdd">Subscribe</button></div>
+  </div>
+</section>
+
+<section id="rewards" class="band">
+  <div class="wrap two">
+    <div>
+      <h2 class="sec">Melt Rewards</h2>
+      <p class="muted">Every drink earns a stamp. Collect 10, get a free one.</p>
+      <div id="stamps" class="stamps"></div>
+      <p id="stampText"></p>
+      <button class="btn ghost" id="stampAdd">+ Add stamp (demo)</button>
+      <button class="btn ghost" id="stampReset">Reset</button>
+    </div>
+    <div>
+      <h2 class="sec">Gift Cards</h2>
+      <div class="chips" id="giftAmts"></div>
+      <input id="giftTo" placeholder="To (name)" aria-label="Recipient">
+      <input id="giftMsg" placeholder="Your message" maxlength="60" aria-label="Message">
+      <div class="giftcard"><b>Melted-Bean</b><span id="giftPreviewMsg">Enjoy a cup on me!</span><em id="giftPreviewAmt">$25</em></div>
+      <button class="btn" id="giftAdd">Add gift card</button>
+    </div>
+  </div>
+</section>
+
+<section id="events" class="wrap">
+  <h2 class="sec" data-reveal>Events</h2>
+  <div id="eventList" class="events"></div>
+</section>
+
+<section class="band" id="team">
+  <div class="wrap">
+    <h2 class="sec" data-reveal>Meet the Baristas</h2>
+    <div id="teamGrid" class="team"></div>
+  </div>
+</section>
+
+<section class="wrap" id="reviews">
+  <h2 class="sec" data-reveal>Kind Words</h2>
+  <div class="carousel" id="carousel"></div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<section class="band" id="reserve">
+  <div class="wrap two">
+    <form id="resForm" class="card">
+      <h2 class="sec">Reserve a table</h2>
+      <label>Name<input name="name" required></label>
+      <label>Date<input name="date" type="date" id="resDate" required></label>
+      <label>Time<input name="time" type="time" min="07:00" max="19:00" required></label>
+      <label>Guests<input name="guests" type="number" min="1" max="12" value="2" required></label>
+      <button class="btn">Request table</button>
+      <p id="resOut" class="muted"></p>
+    </form>
+    <div class="card" id="trackerCard">
+      <h2 class="sec">Order tracker</h2>
+      <p class="muted">Place an order and watch it move here.</p>
+      <ol class="tracker" id="tracker"><li>Received</li><li>Brewing</li><li>Ready</li></ol>
+      <p id="trackerMsg" class="muted">No active order.</p>
+    </div>
+  </div>
+</section>
+
+<section id="visit" class="wrap">
+  <h2 class="sec" data-reveal>Visit Us</h2>
+  <div class="two">
+    <div>
+      <p><b>Melted-Bean Café</b><br>123 Example Ave SW, Calgary, AB<br><small class="muted">(placeholder address, edit in index.html)</small></p>
+      <table class="hours" id="hours"></table>
+      <p>☎ (403) 555-0142 · ✉ hello@melted-bean.example</p>
+      <p>
+        <a href="#" aria-label="Instagram">Instagram</a> ·
+        <a href="#" aria-label="TikTok">TikTok</a> ·
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </p>
+    </div>
+    <iframe title="Map" loading="lazy" class="map" src="https://www.openstreetmap.org/export/embed.html?bbox=-114.09%2C51.035%2C-114.05%2C51.055&layer=mapnik"></iframe>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap narrow">
+    <h2 class="sec">FAQ</h2>
+    <details><summary>Do you have plant-based milks?</summary><p>Yes: oat, almond and soy at every location.</p></details>
+    <details><summary>Can I order ahead?</summary><p>Add items to your cart and choose pickup or delivery at checkout.</p></details>
+    <details><summary>Is the Wi-Fi free?</summary><p>Of course, and so are the power outlets.</p></details>
+    <details><summary>Do you do catering?</summary><p>Use the contact form below and we'll quote you within a day.</p></details>
+    <details><summary>Are dogs welcome?</summary><p>On the patio, with a free puppuccino.</p></details>
+  </div>
+</section>
+
+<section class="wrap two" id="contact">
+  <form id="newsForm" class="card">
+    <h2 class="sec">Newsletter</h2>
+    <p class="muted">Seasonal drinks, events, secret codes.</p>
+    <input type="email" id="newsEmail" placeholder="you@email.com" required aria-label="Email">
+    <button class="btn">Subscribe</button>
+  </form>
+  <form id="contactForm" class="card">
+    <h2 class="sec">Say hello</h2>
+    <input id="cName" placeholder="Name" required>
+    <textarea id="cMsg" rows="3" placeholder="Message" required></textarea>
+    <button class="btn">Send</button>
+  </form>
+</section>
+</main>
+
+<footer>
+  <p><b>Melted-Bean</b> · Brewed slowly, served warmly · © <span id="yr"></span></p>
+  <p class="muted">Press <kbd>?</kbd> for keyboard shortcuts · Psst, try the Konami code.</p>
+</footer>
+
+<button id="toTop" aria-label="Back to top">↑</button>
+
+<aside id="cart" aria-label="Cart" aria-hidden="true">
+  <header><h2>Your order</h2><button id="cartClose" class="icon-btn" aria-label="Close">×</button></header>
+  <div id="cartLines"></div>
+  <div class="cart-foot">
+    <div class="promo"><input id="promo" placeholder="Promo code"><button class="btn ghost" id="promoBtn">Apply</button></div>
+    <p class="muted small">Try MELT10 or HALLOWEEN</p>
+    <div class="chips" id="tips"><button class="chip" data-tip="0">No tip</button><button class="chip on" data-tip="0.1">10%</button><button class="chip" data-tip="0.15">15%</button><button class="chip" data-tip="0.2">20%</button></div>
+    <dl id="totals"></dl>
+    <form id="checkout">
+      <input id="coName" placeholder="Name for order" required>
+      <select id="coType"><option>Pickup</option><option>Dine-in</option><option>Delivery</option></select>
+      <button class="btn block">Place order</button>
+    </form>
+    <p class="muted small">Demo checkout, no payment is taken.</p>
+  </div>
+</aside>
+<div id="scrim"></div>
+
+<dialog id="modal"></dialog>
+<dialog id="lightbox"><img alt=""><button class="icon-btn" id="lbClose" aria-label="Close">×</button></dialog>
+<dialog id="help"><h3>Keyboard shortcuts</h3><p><kbd>C</kbd> cart · <kbd>T</kbd> theme · <kbd>/</kbd> search · <kbd>?</kbd> this help · <kbd>Esc</kbd> close</p><button class="btn" onclick="this.closest('dialog').close()">Got it</button></dialog>
+
+<div id="cookie"><span>We use local storage to remember your cart and favourites. No tracking.</span><button class="btn" id="cookieOk">OK</button></div>
+<div id="toasts" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "Melted-Bean",
+  "short_name": "MeltedBean",
+  "description": "Slow-melted specialty coffee. Order ahead, build your drink, earn rewards.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1a0f0a",
+  "theme_color": "#2b1810",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
